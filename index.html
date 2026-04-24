@@ -208,6 +208,27 @@ nav{margin-bottom:auto}
 .edu-degree{font-size:11px;font-weight:300;color:var(--mid);letter-spacing:.5px;margin-bottom:8px}
 .edu-note{font-size:9px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
 
+/* LUXURY */
+.lux-intro{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:300;line-height:1.75;
+  color:var(--mid);max-width:660px;margin-bottom:48px;
+}
+.lux-intro em{font-style:italic;color:var(--gold)}
+.lux-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px 24px;margin-bottom:48px}
+.lux-card{cursor:pointer;display:flex;flex-direction:column}
+.lux-frame{position:relative;overflow:hidden;background:var(--s1);border:1px solid var(--line)}
+.lux-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.16,1,.3,1),filter .4s;filter:grayscale(10%) brightness(.95)}
+.lux-card:hover .lux-frame img{transform:scale(1.03);filter:grayscale(0) brightness(1)}
+.lux-card.tall .lux-frame{aspect-ratio:4/5}
+.lux-card.wide .lux-frame{aspect-ratio:1/1}
+.lux-meta{padding:14px 2px 0;display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:1px solid var(--line);margin-top:0}
+.lux-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;font-style:italic;color:var(--text);line-height:1.2}
+.lux-client{font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.lux-desc{font-size:10px;font-weight:300;color:var(--muted);letter-spacing:.3px;margin-top:6px;line-height:1.5}
+.lux-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:36px;padding-top:28px;border-top:1px solid var(--line)}
+.lux-tag{font-size:9px;font-weight:400;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border:1px solid rgba(200,171,130,.2);color:rgba(200,171,130,.7)}
+
 /* FOOTER */
 .footer{
   position:fixed;bottom:0;left:300px;right:0;
@@ -247,6 +268,9 @@ nav{margin-bottom:auto}
     </div>
     <div class="nav-link" onclick="show('recognition',this)">
       <span class="nav-name">Recognition</span><span class="nav-idx">05</span>
+    </div>
+    <div class="nav-link" onclick="show('luxury',this)">
+      <span class="nav-name">Luxury</span><span class="nav-idx">06</span>
     </div>
   </nav>
   <div class="awards-block">
@@ -380,6 +404,64 @@ nav{margin-bottom:auto}
     </div>
   </div>
 
+  <div class="section" id="luxury">
+    <div class="section-eyebrow">Selected Campaigns / Fragrance, Fine Jewelry, Horology</div>
+    <div class="section-title">Lux<em>ury</em></div>
+    <p class="lux-intro">
+      Direction and art for <em>luxury houses</em> across fragrance, jewelry, and horology. Quiet light, hand-held objects, and a slow, editorial stillness, built for print and digital in equal measure.
+    </p>
+    <div class="lux-grid">
+      <div class="lux-card tall" onclick="openLux(0)">
+        <div class="lux-frame"><img src="images/luxury-1.jpg" alt="Inheritance fragrance campaign" loading="lazy"></div>
+        <div class="lux-meta">
+          <div>
+            <div class="lux-title">Inheritance</div>
+            <div class="lux-desc">Fragrance campaign / two generations, one scent</div>
+          </div>
+          <div class="lux-client">Maison No. VII</div>
+        </div>
+      </div>
+      <div class="lux-card tall" onclick="openLux(1)">
+        <div class="lux-frame"><img src="images/luxury-2.jpg" alt="Jardin Privé fine jewelry campaign" loading="lazy"></div>
+        <div class="lux-meta">
+          <div>
+            <div class="lux-title">Jardin Privé</div>
+            <div class="lux-desc">Fine jewelry editorial / chateau light, stacked diamonds</div>
+          </div>
+          <div class="lux-client">Clérisseau</div>
+        </div>
+      </div>
+      <div class="lux-card wide" onclick="openLux(2)">
+        <div class="lux-frame"><img src="images/luxury-3.jpg" alt="Rosé Hour watch campaign" loading="lazy"></div>
+        <div class="lux-meta">
+          <div>
+            <div class="lux-title">Rosé Hour</div>
+            <div class="lux-desc">Horology / rose gold mesh, evening campaign</div>
+          </div>
+          <div class="lux-client">Nordheim</div>
+        </div>
+      </div>
+      <div class="lux-card wide" onclick="openLux(3)">
+        <div class="lux-frame"><img src="images/luxury-4.jpg" alt="Emerald Hand high jewelry campaign" loading="lazy"></div>
+        <div class="lux-meta">
+          <div>
+            <div class="lux-title">Emerald Hand</div>
+            <div class="lux-desc">High jewelry / velvet glove, rough emerald, pavé</div>
+          </div>
+          <div class="lux-client">Archive 1987</div>
+        </div>
+      </div>
+    </div>
+    <div class="lux-tags">
+      <div class="lux-tag">Art Direction</div>
+      <div class="lux-tag">Fragrance</div>
+      <div class="lux-tag">Fine Jewelry</div>
+      <div class="lux-tag">Horology</div>
+      <div class="lux-tag">Editorial</div>
+      <div class="lux-tag">Print and Digital</div>
+    </div>
+  </div>
+
 </main>
 </div>
 
@@ -485,6 +567,20 @@ function show(id, el) {
   document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   el.classList.add('active');
+}
+
+const luxData = [
+  {src:'images/luxury-1.jpg', title:'Inheritance', cat:'Maison No. VII / Fragrance Campaign'},
+  {src:'images/luxury-2.jpg', title:'Jardin Privé', cat:'Clérisseau / Fine Jewelry'},
+  {src:'images/luxury-3.jpg', title:'Rosé Hour', cat:'Nordheim / Horology'},
+  {src:'images/luxury-4.jpg', title:'Emerald Hand', cat:'Archive 1987 / High Jewelry'},
+];
+function openLux(i) {
+  const d = luxData[i];
+  document.getElementById('lb-img').src = d.src;
+  document.getElementById('lb-title').textContent = d.title;
+  document.getElementById('lb-cat').textContent = d.cat;
+  document.getElementById('lightbox').classList.add('open');
 }
 
 buildJobs();
